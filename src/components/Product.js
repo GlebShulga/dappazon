@@ -1,7 +1,11 @@
 import { useEffect, useState } from "react";
 import { ethers } from "ethers";
 import Rating from "./Rating";
-import { FOUR_DAYS, NO_STOCK } from "../constants/common";
+import {
+  FOUR_DAYS,
+  NO_STOCK,
+  SECONDS_TO_MILLISECONDS,
+} from "../constants/common";
 import { isObjectEmpty } from "../helpers/object-utils";
 import close from "../assets/close.svg";
 
@@ -97,7 +101,7 @@ const Product = ({ item, provider, account, dappazon, togglePop }) => {
               Item bought on <br />
               <strong>
                 {new Date(
-                  Number(order.time.toString()) * 1000
+                  Number(order.time.toString()) * SECONDS_TO_MILLISECONDS
                 ).toLocaleDateString(undefined, {
                   weekday: "long",
                   month: "long",
